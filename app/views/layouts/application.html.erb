@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CableSlackChat</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <%= render 'layouts/header' %>
+      <div class="fluid-container" style="margin-top:70px;">
+        <div class="row">
+          <div class="col-sm-2" style="position:fixed; top:70px; left: 0px;">
+            <% if user_signed_in?%>
+              <h5>Chatrooms</h5>
+              <ul>
+                <%  current_user.chatrooms.each do |chatroom| %>
+                  <li><%= link_to chatroom.name, chatroom, data: {behaviour: "chatroom-link", chatroom_id: chatroom.id}%></li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+
+          <div class="col-sm-10 col-sm-offset-2">
+            <%= yield %>
+          </div>
+
+        </div>
+  	  <%#= render 'layouts/footer' %>
+  	  <%#= debug(params) if Rails.env.development? %>
+      </div>
+
+</body>
+</html>
