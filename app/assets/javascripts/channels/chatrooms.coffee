@@ -12,7 +12,7 @@ App.chatrooms = App.cable.subscriptions.create "ChatroomsChannel",
 
       if document.hidden
         if $('.strike').length == 0
-          acive_chatroom.append("<div class='strike'><span>Unread Message<hr></span></div>");
+          acive_chatroom.append("<div class='strike'><span>Unread Message</span></div>");
 
 
         if Notification.permission == "granted"
